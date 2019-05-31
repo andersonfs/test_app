@@ -11,6 +11,9 @@ RSpec.describe Customer, type: :model do
 
   it '#full_name' do
     customer = create(:customer)
+    customer1 = create(:customer)
+    puts customer.email
+    puts customer1.email
     expect(customer.full_name).to start_with("Sr(a). ")
   end
 
