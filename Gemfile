@@ -44,6 +44,8 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails', '~> 3.6'
   gem 'httparty'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 group :development do
