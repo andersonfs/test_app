@@ -30,6 +30,9 @@ module TestApp
     # Don't generate system test files.
     config.generators.system_tests = nil
 
+    # TimeZone
+    config.time_zone = "America/Sao_Paulo"
+
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: false,
