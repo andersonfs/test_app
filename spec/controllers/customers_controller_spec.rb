@@ -46,5 +46,11 @@ RSpec.describe CustomersController, type: :controller do
          post :create, params: { customer: customer_params }
       }.to change(Customer, :count).by(1)
     end
+
+    it 'flash notice' do
+      customer_params = attributes_for(:customer)
+      post :create, params: { customer: customer_params }
+      expect(flash[:notice]).to match(/successfully created/)
+    end
   end
 end
