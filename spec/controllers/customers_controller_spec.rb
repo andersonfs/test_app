@@ -47,6 +47,14 @@ RSpec.describe CustomersController, type: :controller do
       }.to change(Customer, :count).by(1)
     end
 
+    it 'with invalid address attribute' do
+      customer_params = attributes_for(:customer, address: nil)
+
+      expect{
+         post :create, params: { customer: customer_params }
+      }.not_to change(Customer, :count)
+    end
+
     it 'flash notice' do
       customer_params = attributes_for(:customer)
       post :create, params: { customer: customer_params }
@@ -63,5 +71,9 @@ RSpec.describe CustomersController, type: :controller do
       post :create, format: :json, params: { customer: customer_params }
       expect(response.content_type).to eq('application/json')
     end
+
+    it { is_expected.to route(:get, '/customers').to(action: :index) }
+    it { is_expected.to route(:post, '/customers').to(action: :create) }
+    
   end
 end
