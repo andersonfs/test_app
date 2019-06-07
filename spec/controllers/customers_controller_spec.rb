@@ -52,5 +52,16 @@ RSpec.describe CustomersController, type: :controller do
       post :create, params: { customer: customer_params }
       expect(flash[:notice]).to match(/successfully created/)
     end
+
+    it 'Content-Type JSON on Show' do
+      get :show, format: :json, params: { id: Customer.first.id }
+      expect(response.content_type).to eq('application/json')
+    end
+
+    it 'Content-Type JSON on Create' do
+      customer_params = attributes_for(:customer)
+      post :create, format: :json, params: { customer: customer_params }
+      expect(response.content_type).to eq('application/json')
+    end
   end
 end
