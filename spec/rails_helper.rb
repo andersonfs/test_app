@@ -34,6 +34,8 @@ end
 RSpec.configure do |config|
   # Devise
   config.include Devise::Test::ControllerHelpers, :type => :controller
+  # Para o Capybara logar no devise
+  config.include Warden::Test::Helpers
 
   # Shoulda Matchers Config
   Shoulda::Matchers.configure do |config|

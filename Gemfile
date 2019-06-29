@@ -50,6 +50,7 @@ group :development, :test do
   gem 'vcr'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rails-controller-testing'
+  gem 'selenium-webdriver'
 end
 
 group :development do
