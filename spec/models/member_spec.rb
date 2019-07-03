@@ -1,5 +1,5 @@
 require 'rails_helper'
 
 RSpec.describe Member, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { expect{ create(:member) }.to change{Member.all.size}.by(1) }
 end
