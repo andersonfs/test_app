@@ -2,6 +2,16 @@ require 'rails_helper'
 
 RSpec.describe "Customers", type: :request do
   describe "GET /customers" do
+
+    it 'JSON Schema' do
+      member = create(:member)
+      login_as(member, scope: :member)
+
+      customer = Customer.first
+      get "/customers/#{customer.id}.json"
+      expect(response).to match_response_schema("customer")
+    end
+
     it "works! 200 OK" do
       get customers_path
       expect(response).to have_http_status(200)
